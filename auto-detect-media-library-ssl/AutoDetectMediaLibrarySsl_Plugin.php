@@ -83,7 +83,8 @@ class AutoDetectMediaLibrarySsl_Plugin extends AutoDetectMediaLibrarySsl_LifeCyc
 
         // Add options administration page
         // http://plugin.michael-simpson.com/?page_id=47
-        add_action('admin_menu', array(&$this, 'addSettingsSubMenuPage'));
+# No settings yet
+#        add_action('admin_menu', array(&$this, 'addSettingsSubMenuPage'));
 
         // Example adding a script & style just for the options administration page
         // http://plugin.michael-simpson.com/?page_id=47
@@ -96,6 +97,14 @@ class AutoDetectMediaLibrarySsl_Plugin extends AutoDetectMediaLibrarySsl_LifeCyc
         // Add Actions & Filters
         // http://plugin.michael-simpson.com/?page_id=37
 
+    	// This filter is simply a copy and paste from code suggested here:
+	// https://codex.wordpress.org/Plugin_API/Filter_Reference/wp_get_attachment_url
+	add_filter('wp_get_attachment_url', 'honor_ssl_for_attachments');
+	function honor_ssl_for_attachments($url) {
+		$http = site_url(FALSE, 'http');
+		$https = site_url(FALSE, 'https');
+		return ( $_SERVER['HTTPS'] == 'on' ) ? str_replace($http, $https, $url) : $url;
+	}
 
         // Adding scripts & styles to all pages
         // Examples:

@@ -8,11 +8,11 @@ Requires at least: 3.5
 Tested up to: 3.5
 Stable tag: 0.1
 
-Loads media library files using SSL when the site is viewed using SSL
+Makes Wordpress load media library files using SSL when the site is viewed using SSL
 
 == Description ==
 
-Loads media library files using SSL when the site is viewed using SSL
+When viewing the Media Library in the Admin area, this plugin causes media library files to load using SSL when the site is viewed using SSL (with https in the URL)
 
 == Installation ==
 
